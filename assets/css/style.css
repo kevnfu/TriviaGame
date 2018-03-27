@@ -1,0 +1,18 @@
+* {
+    box-sizing: border-box;
+}
+
+#question {
+    text-align: center;
+}
+
+.answer {
+    text-align: center;
+    height: 40px;
+}
+
+.answer:hover {
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+}
