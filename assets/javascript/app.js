@@ -54,30 +54,22 @@ $(document).ready(function() {
 $(document).on("click", ".answer", function() {
     console.log($(this).data("i"));
     let ans = parseInt($(this).data("i"));
+    
+    $("#question-section").hide();
+    
     if(ans === data[qIndex].correct) {
-        correctAnswer();
+        $("#response").show().html("Correct!");
+        correct++;
     } else {
-        incorrectAnswer();
+        $("#response").show().html("Incorrect. Correct answer was " + data[qIndex].a[data[qIndex].correct]);
+        incorrect++;
     }
+
+    setTimeout(newQuestion, 2000);
 })
-
-function correctAnswer() {
-    $("#question-section").hide();
-    $("#response").show().html("Correct!");
-    correct++;
-    setTimeout(newQuestion, 2000);
-}
-
-function incorrectAnswer() {
-    $("#question-section").hide();
-    $("#response").show().html("Incorrect. Correct answer was " + data[qIndex].a[data[qIndex].correct]);
-    incorrect++;
-    setTimeout(newQuestion, 2000);
-}
 
 function newQuestion() {
     qIndex++;
-    console.log(qIndex + " " + data.length);
     if(qIndex >= data.length) {
         gameEnd();
         return;
